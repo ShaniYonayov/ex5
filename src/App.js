@@ -1,25 +1,40 @@
-import logo from './logo.svg';
+import { useState,useEffect } from 'react';
+import Password from './Password';
 import './App.css';
 
+
+
 function App() {
+
+  
+  const [input, setInput] = useState(0);
+  const [strengthBole, setStrengthBole] = useState(true);
+
+  function handleChange(e){
+    setInput(e.target.value)
+  }
+  useEffect(()=>{
+    if(input.length >2){
+      setStrengthBole(false)
+    }
+    else{setStrengthBole(true);}
+    },[setStrengthBole,input])
+ 
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Welcome</h1>
+      <p><h3>Please enter password:</h3></p>
+      <p><input className='inputcss'  onChange={handleChange} />
+      <button  disabled={strengthBole}>Submit</button></p>
+      
+      
+      <Password input={input} />
+      
+
     </div>
   );
 }
+
 
 export default App;
