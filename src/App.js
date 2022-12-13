@@ -20,7 +20,7 @@ function App() {
     else{setStrengthBole(true);}
     },[setStrengthBole,input])
  
-
+// 
   return (
     <div className="App">
       <h1>Welcome</h1>
